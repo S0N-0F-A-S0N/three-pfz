@@ -127,12 +127,12 @@ export class TaobaoPlatform {
   dispatchTouchEvent(e = {}) {
     const target = Object.assign({}, this);
 
+    const touches = e.touches.map(touch => new Touch(touch));
+
     const event = {
       changedTouches: e.changedTouches.map(touch => new Touch(touch)),
-      touches: e.touches.map(touch => new Touch(touch)),
-      targetTouches: Array.prototype.slice.call(
-        e.touches.map(touch => new Touch(touch)),
-      ),
+      touches: touches,
+      targetTouches: touches,
       timeStamp: e.timeStamp,
       target: target,
       currentTarget: target,

@@ -144,12 +144,12 @@ export class WechatPlatform {
     const target = { ...this };
     const changedTouches = e.changedTouches.map(touch => new Touch(touch));
 
+    const touches = e.touches.map(touch => new Touch(touch));
+
     const event = {
       changedTouches: changedTouches,
-      touches: e.touches.map(touch => new Touch(touch)),
-      targetTouches: Array.prototype.slice.call(
-        e.touches.map(touch => new Touch(touch)),
-      ),
+      touches: touches,
+      targetTouches: touches,
       timeStamp: e.timeStamp,
       target: target,
       currentTarget: target,
